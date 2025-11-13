@@ -2319,9 +2319,9 @@ button:disabled {
   position: relative;
   border-radius: 16px;
   overflow: hidden;
-  min-height: 320px;
+  min-height: 420px;
 }
-.welcome-hero-bg { position: absolute; inset: 0; background-size: cover; background-position: center; }
+.welcome-hero-bg { position: absolute; inset: 0; background-size: cover; background-position: top center; }
 .welcome-hero-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(15,19,36,0.25), rgba(15,19,36,0.5)); pointer-events: none; }
 .welcome-hero-content {
   position: absolute;
@@ -2336,6 +2336,14 @@ button:disabled {
 @media (max-width: 640px) {
   .welcome-hero-content { left: 12px; bottom: 12px; }
   .welcome-hero-title { font-size: 20px; }
+}
+
+/* Ajuste de altura do banner por breakpoint para evitar recorte no desktop */
+@media (max-width: 900px) {
+  .welcome-hero { min-height: 360px; }
+}
+@media (max-width: 640px) {
+  .welcome-hero { min-height: 320px; }
 }
 
 /* ===== Featured box com tipografia/gradiente ===== */
