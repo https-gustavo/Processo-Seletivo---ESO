@@ -15,4 +15,4 @@ services:
       - key: DB_PATH
         value: data/app.db
       - key: CORS_ORIGIN
-        value: https://SEU-FRONTEND.vercel.app
+        value: https://processo-seletivo-eso.onrender.com,http://localhost:5173
