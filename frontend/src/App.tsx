@@ -14,7 +14,7 @@ const PerfilPublicoPage = lazy(() => import('./pages/PerfilPublico'))
 
 export default function App() {
   const location = useLocation()
-  const isLogin = location.pathname === '/login'
+  const isLogin = location.pathname === '/login' || location.pathname === '/register'
   return (
     <div className={`container theme-ftv ${isLogin ? 'login-container' : ''}`}>
       <TopBar />
