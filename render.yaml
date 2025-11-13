@@ -13,10 +13,6 @@ services:
       - key: JWT_SECRET
         generateValue: true
       - key: DB_PATH
-        value: /data/app.db
+        value: data/app.db
       - key: CORS_ORIGIN
         value: https://SEU-FRONTEND.vercel.app
-    disk:
-      name: data
-      mountPath: /data
-      sizeGB: 1
