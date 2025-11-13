@@ -1,0 +1,16 @@
+node_modules
+dist
+.git
+.gitignore
+*.log
+Dockerfile
+docker-compose.yml
+.vite
+frontend/node_modules
+frontend/dist
+frontend/.vite
+backend/node_modules
+backend/dist
+backend/data
+.DS_Store
+Thumbs.db

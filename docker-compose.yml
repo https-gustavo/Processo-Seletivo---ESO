@@ -1,0 +1,32 @@
+version: "3.8"
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "8080:8080"
+    environment:
+      - JWT_SECRET=supersecret
+      - EXTERNAL_API_BASE_URL=https://fortnite-api.com/v2
+      - DB_PATH=/app/data/app.db
+    volumes:
+      - backend_data:/app/data
+    restart: unless-stopped
+  frontend:
+    build: ./frontend
+    ports:
+      - "5173:5173"
+    environment:
+      - VITE_API_BASE_URL=/api
+      - VITE_API_PROXY_TARGET=http://backend:8080
+      # Ensure file change detection works inside the container
+      - CHOKIDAR_USEPOLLING=1
+    volumes:
+      # Mount local frontend code for live reload
+      - ./frontend:/app
+      # Keep node_modules inside the container to avoid host mismatch
+      - /app/node_modules
+    depends_on:
+      - backend
+    restart: unless-stopped
+volumes:
+  backend_data:
