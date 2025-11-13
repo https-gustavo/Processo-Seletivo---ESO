@@ -5,6 +5,7 @@ import { api } from '../api'
 export default function RegisterPage() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [showPassword, setShowPassword] = useState(false)
   const [message, setMessage] = useState('')
   const [variant, setVariant] = useState<'success'|'error'|''>('')
   const [loading, setLoading] = useState(false)
@@ -32,11 +33,12 @@ export default function RegisterPage() {
   const canSubmit = email.trim().length > 3 && password.trim().length >= 6
 
   return (
-    <main className="register-page">
-      <section className="register-content" aria-label="Área de cadastro">
-        <form onSubmit={onSubmit} className="register-card" aria-describedby="register-hint">
-          <h1 className="register-title">Criar conta</h1>
-          <p id="register-hint" className="register-subtitle">Cadastre-se para acessar o catálogo e suas compras.</p>
+    <main className="login-page">
+      <section className="login-hero" aria-hidden="true" />
+      <section className="login-content" aria-label="Área de cadastro">
+        <form onSubmit={onSubmit} className="login-card" aria-describedby="register-hint">
+          <h1 className="login-title">Criar conta</h1>
+          <p id="register-hint" className="login-subtitle">Cadastre-se para acessar o catálogo e suas compras.</p>
 
           <label className="field">
             <span>Email</span>
@@ -52,15 +54,20 @@ export default function RegisterPage() {
 
           <label className="field">
             <span>Senha</span>
-            <input
-              type="password"
-              value={password}
-              onChange={e => setPassword(e.target.value)}
-              placeholder="••••••"
-              autoComplete="new-password"
-              required
-              minLength={6}
-            />
+            <div className="password-field">
+              <input
+                type={showPassword ? 'text' : 'password'}
+                value={password}
+                onChange={e => setPassword(e.target.value)}
+                placeholder="••••••"
+                autoComplete="new-password"
+                required
+                minLength={6}
+              />
+              <button type="button" className="btn small" onClick={() => setShowPassword(s => !s)} aria-label={showPassword ? 'Ocultar senha' : 'Mostrar senha'}>
+                {showPassword ? 'Ocultar' : 'Mostrar'}
+              </button>
+            </div>
           </label>
 
           <button type="submit" className="btn btn-primary" disabled={!canSubmit || loading} aria-busy={loading}>
@@ -71,7 +78,7 @@ export default function RegisterPage() {
             <div className={`form-message ${variant}`} role="alert" aria-live="polite">{message}</div>
           )}
 
-          <div className="register-actions">
+          <div className="login-actions">
             <Link to="/login" className="link">Já tenho conta</Link>
           </div>
         </form>
