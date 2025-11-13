@@ -76,7 +76,6 @@ export default function HomePage() {
 
   return (
     <div className="item-shop">
-      <h1 className="page-title">Temporada dos Simpsons</h1>
       <section className="welcome-hero" aria-label="Banner inicial">
         <div className="welcome-hero-bg" />
         <div className="welcome-hero-overlay" />
