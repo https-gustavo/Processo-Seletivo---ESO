@@ -80,7 +80,7 @@ export default function HomePage() {
         <div className="welcome-hero-bg" />
         <div className="welcome-hero-overlay" />
         <div className="welcome-hero-content">
-          <h1 className="page-title">Temporada dos Simpsons</h1>
+          <h1 className="page-title welcome-hero-title">Temporada dos Simpsons</h1>
           <p className="muted">Explore os cosméticos em destaque abaixo.</p>
         </div>
       </section>
