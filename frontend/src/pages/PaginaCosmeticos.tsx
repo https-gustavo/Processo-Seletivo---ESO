@@ -13,6 +13,8 @@ type Cosmetic = {
   isNew?: boolean
   onSale?: boolean
   owned?: boolean
+  price?: number
+  salePrice?: number
 }
 
 export default function CosmeticsPage() {
