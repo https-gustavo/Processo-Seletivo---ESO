@@ -1818,6 +1818,23 @@ button:disabled {
   border: 1px solid rgba(110, 130, 200, 0.35);
 }
 
+/* Neutraliza herança de cor de raridade dentro dos cards
+   para evitar dígitos/trechos ficando verdes no canto */
+.card.rarity-uncommon,
+.card.rarity-rare,
+.card.rarity-epic,
+.card.rarity-legendary,
+.card.rarity-mythic {
+  color: inherit !important;
+}
+
+/* Garante que os valores/labels de V-Bucks nos cards
+   permaneçam brancos e legíveis, sem herdar cores */
+.card .vbuck-label,
+.card .vbucks-amount {
+  color: #fff !important;
+}
+
 /* ===== Página de detalhes ===== */
 .detail-hero {
   position: relative;
@@ -2295,6 +2312,30 @@ button:disabled {
 }
 .hero-cta {
   margin-top: 10px;
+}
+
+/* ===== Welcome hero específico da Home ===== */
+.welcome-hero {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  min-height: 320px;
+}
+.welcome-hero-bg { position: absolute; inset: 0; background-size: cover; background-position: center; }
+.welcome-hero-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(15,19,36,0.25), rgba(15,19,36,0.5)); pointer-events: none; }
+.welcome-hero-content {
+  position: absolute;
+  left: 16px;
+  bottom: 16px;
+  z-index: 2;
+  display: grid;
+  gap: 6px;
+  text-align: left;
+}
+.welcome-hero-title { margin: 0; }
+@media (max-width: 640px) {
+  .welcome-hero-content { left: 12px; bottom: 12px; }
+  .welcome-hero-title { font-size: 20px; }
 }
 
 /* ===== Featured box com tipografia/gradiente ===== */
@@ -3144,6 +3185,53 @@ html {
 .spotlight-title {
   margin: 6px 0;
   font-size: 18px;
+}
+
+/* ===== Grids genéricas de cards ===== */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 14px;
+}
+@media (max-width: 480px) {
+  .grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+}
+
+/* Grade específica do catálogo de cosméticos */
+#cosmetics-grid {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+@media (max-width: 640px) {
+  #cosmetics-grid { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); }
+}
+
+/* Container de conteúdo do catálogo deve ocupar largura total disponível */
+.catalog-content { width: 100%; }
+
+/* ===== TopBar responsiva ===== */
+@media (max-width: 640px) {
+  .topbar { flex-wrap: wrap; gap: 10px; }
+  .topbar .vbucks-balance { order: 3; width: 100%; }
+  /* Mantém os botões juntos e centralizados no mobile */
+  .topbar .top-links { width: 100%; justify-content: center; flex-wrap: wrap; gap: 8px; }
+  .topbar .top-link { flex: 0 0 auto; padding: 8px 10px; font-size: 13px; }
+}
+
+/* ===== Hero e detalhe responsivos ===== */
+@media (max-width: 900px) {
+  .detail-hero { grid-template-columns: 1fr; }
+}
+
+/* Banner inicial genérico: centralização e padding escaláveis */
+.welcome-hero-content { padding: 16px; text-align: center; }
+@media (max-width: 640px) {
+  .welcome-hero-content { padding: 12px; }
+}
+
+/* ===== Overlay de chips nos cards: evitar quebra no mobile ===== */
+.card-overlay { gap: 8px; }
+@media (max-width: 480px) {
+  .card-overlay { flex-direction: column; align-items: flex-start; }
 }
 
 /* ===== Detalhe do produto ===== */
