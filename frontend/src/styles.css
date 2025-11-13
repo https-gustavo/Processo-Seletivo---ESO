@@ -337,7 +337,7 @@ body {
   position: absolute;
   inset: 0;
   background: url("/imagens/krusty.webp") top center/cover no-repeat;
-  filter: blur(2px) brightness(0.7);
+  filter: brightness(0.7);
   transform: scale(1.02);
 }
 .welcome-hero-overlay {
