@@ -21,11 +21,3 @@ services:
       name: data
       mountPath: /data
       sizeGB: 1
-  - type: static_site
-    name: eso-fortnite-frontend
-    rootDirectory: frontend
-    buildCommand: npm install && npm run build
-    staticPublishPath: dist
-    envVars:
-      - key: VITE_API_BASE_URL
-        value: https://eso-fortnite-backend.onrender.com/api
